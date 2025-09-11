@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import Video from './Video';
+import './assets/css/App.css';
+
+
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const sampleVideo = {
+  id: '1',
+  title: 'React Tutorial',
+  description: 'Learn React step by step',
+  url: 'https://example.com/video1',
+  thumbnailUrl: 'https://via.placeholder.com/200x120'
+}; 
+
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <Video  video={sampleVideo} />
   </React.StrictMode>
 );
 
