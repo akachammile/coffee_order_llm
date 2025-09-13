@@ -1,27 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import {useReducer} from 'react';
 
-import './assets/css/App.css';
+interface State {
+   count: number
+};
 
-function App() {
+type CounterAction =
+  | { type: "reset" }
+  | { type: "setCount"; value: State["count"] }
+
+const initialState: State = { count: 0 };
+
+function stateReducer(state: State, action: CounterAction): State {
+  switch (action.type) {
+    case "reset":
+      return initialState;
+    case "setCount":
+      return { ...state, count: action.value };
+    default:
+      throw new Error("Unknown action");
+  }
+}
+
+export default function App() {
+  const [state, dispatch] = useReducer(stateReducer, initialState);
+
+  const addFive = () => dispatch({ type: "setCount", value: state.count + 5 });
+  const reset = () => dispatch({ type: "reset" });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>欢迎来到我的计数器</h1>
+
+      <p>计数： {state.count}</p>
+      <button onClick={addFive}>加 5</button>
+      <button onClick={reset}>重置</button>
     </div>
   );
 }
 
-export default App;
