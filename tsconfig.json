@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+        "@hooks/*": ["hooks/*"],
+        "@components/*": ["components/*"],
+        "@store/*": ["store/*"]
+      },
     "target": "es5",
     "lib": [
       "dom",
@@ -21,7 +27,7 @@
     "jsx": "react-jsx",
     // "ignoreDeprecations": "6.0"
   },
-  "include": [
-    "src"
-  ]
+    "include": ["src", "src/components/Counter/CounterButton.tsx"],
+
+
 }
