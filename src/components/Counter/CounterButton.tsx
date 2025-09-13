@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { initialState, stateReducer } from "../../hooks/counterReducer";
+import { initialState, stateReducer } from "@hooks/counterReducer";
 
 function CounterButton() {
   const [state, dispatch] = useReducer(stateReducer, initialState);
